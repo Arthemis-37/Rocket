@@ -1,39 +1,62 @@
-# Rocket : faites décoller la fusée !
-## Enoncé
-La fusée est prête à décoller pour partir à la conquête de l'univers Javascript !
-Mais il reste du travail aux ingénieurs : le compte à rebours ne fonctionne pas encore et le processus d'allumage et de décollage de la fusée ne sont pas encore opérationnels.
-### Fonctionnement attendu
-Au clic sur le bouton de mise à feu, le compte à rebours s'affiche immédiatement sur le panneau d'affichage et démarre à 10.  Puis chaque seconde, le compte à rebours diminue de 1. Lorsque "0" est affiché, la fusée devra décoller !
-### Remarques
+🚀 Rocket : Mission JS-01
+Ce projet est une application web interactive simulant le décollage d'une fusée. L'objectif était de manipuler le DOM (Document Object Model), de gérer des événements utilisateur et de maîtriser les fonctions de timing en JavaScript.
 
- - Une fois le bouton de mise à feu enclenché, celui-ci n'est plus opérationnel, on ne peut plus cliquer dessus. On pourra utiliser la classe ***disabled*** définie dans le fichier CSS pour gérer l'apparence du bouton. 
- - Au début du compte à rebours, l'image de la fusée doit changer (rocket2.gif)
- - A la fin du compte à rebours, l'image de la fusée doit changer (rocket3.gif)
+📋 Table des matières
+Fonctionnalités
 
-### Conseils et astuces
+Structure du Projet
 
- - Pour gérer le ***temps*** en Javascript, il va falloir utiliser les ***chronomètres*** !
- - S'il est possible *d'ajouter* un gestionnaire d'événement, il doit sans doute être possible de le *supprimer*...
- - Organisez votre code pour vous y retrouver : déclaration des constantes et variables globales en premier, puis définition des fonctions, puis code principal tout en bas.
- - Jetez un oeil au fichier rocket.css, observer les classes qui pourront servir : disabled, tookOff, tiny, normal, big.
+Détails Techniques
 
-## Fonctions utiles
-setInterval: https://www.w3schools.com/jsref/met_win_setinterval.asp
+Bonus : Allons plus loin
 
-clearInterval: https://www.w3schools.com/jsref/met_win_clearinterval.asp
+Aperçu
 
-setTimeout: https://www.w3schools.com/jsref/met_win_settimeout.asp
+Fonctionnalités
+Le processus de lancement respecte les étapes suivantes :
 
-clearTimeout: https://www.w3schools.com/jsref/met_win_cleartimeout.asp
+Mise à feu : Au clic sur le bouton "Mise à feu", le compte à rebours commence à 10.
 
-Methodes Classlist: https://www.alsacreations.com/article/lire/1498-lapi-classlist.html
+Changement d'état : Dès le départ, l'image de la fusée passe en mode "préparation" (rocket2.gif) et le bouton devient inactif.
 
-Utiliser la propriété src pour modifier l'image sélectionné
+Compte à rebours : Chaque seconde, l'affichage se met à jour.
 
-## Allons plus loin
- 1. Le décor n'est pas terminé ! Vous devez ajouter 150 étoiles de taille aléatoire (classes tiny, normal, big dans le fichier CSS)
- et à des endroits aléatoires de la page.
- 2. Ajouter un bouton pour annuler la mise à feu   
-    Ce bouton est visible dès le début mais ne sera actif qu'une fois la mise à feu déclenchée et jusqu'au décollage.   
-    Une fois le compte à rebours terminé, il n'est plus possible de l'arrêter, le bouton est désactivé (classe CSS disabled)
- 3. Ajouter un bouton pour remettre à zéro le décollage
+Décollage : À 0, l'image change pour la version en vol (rocket3.gif) et la fusée s'élance vers le haut de l'écran.
+
+Structure du Projet
+Le code est organisé de manière modulaire pour garantir une meilleure lisibilité :
+
+Déclaration des constantes & variables globales : Sélection des éléments du DOM (boutons, image, affichage) et initialisation du timer.
+
+Définition des fonctions :
+
+updateCountdown() : Gère la logique de décrémentation et le changement d'images.
+
+launchRocket() : Initialise le processus et désactive les contrôles.
+
+resetRocket() : Réinitialise l'état complet du lanceur.
+
+createStars() : Génère dynamiquement le décor spatial.
+
+Code principal : Mise en place des écouteurs d'événements (click).
+
+Détails Techniques
+Pour réaliser ce projet, les concepts suivants ont été utilisés :
+
+setInterval() & clearInterval() : Pour créer une boucle de temps précise chaque seconde.
+
+classList : Pour ajouter ou supprimer les classes CSS (.disabled, .tookOff) dynamiquement.
+
+Manipulation d'attributs : Utilisation de la propriété .src pour modifier les images en temps réel.
+
+Bonus : Allons plus loin
+Nous avons poussé l'expérience au-delà du cahier des charges initial :
+
+Génération d'étoiles : Un algorithme génère 150 étoiles de manière aléatoire. Chaque étoile reçoit une taille aléatoire (tiny, normal ou big) et une position top / left générée aléatoirement en JavaScript pour un fond unique à chaque rechargement.
+
+Annulation de mise à feu : Un bouton "Annuler" permet d'arrêter le compte à rebours en plein vol tant que la fusée n'a pas décollé.
+
+Reset (Remise à zéro) : Un bouton de réinitialisation permet de remettre la fusée au sol, de réactiver le bouton de mise à feu et de remettre le compteur à 10 sans rafraîchir la page.
+
+Aperçu
+Note aux ingénieurs : Ce projet démontre la capacité à orchestrer plusieurs événements asynchrones en synchronisant l'interface utilisateur (HTML/CSS) avec la logique applicative (JS).
